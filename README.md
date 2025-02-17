@@ -4,7 +4,10 @@
 This repository serves as a template for ESO-related projects under the academic research lab at McGill University. It includes a standard directory structure and setup instructions.
 
 ## Project Description
-(Provide a brief summary of the specific project here. TBD...)
+We publish the protocol on [protocols.io](https://www.protocols.io/file-manager/FC138511E8A711EFB24B0A58A9FEAC02). The data will be stored on [Dataverse](https://www.mcgill.ca/library/services/data-services/sharing/dataverse). TBD...
+
+## Usage
+This repository serves as a template for organizing future projects.
 
 ## Repository Structure
 
@@ -18,3 +21,6 @@ This repository serves as a template for ESO-related projects under the academic
         ├── requirements.txt        # Python package dependencies
         ├── LICENSE
         └── README.md
+
+## Contact
+[Jin Kweon](mailto:jin.kweon@mail.mcgill.ca), [Trafford Crump](mailto:trafford.crump@mcgill.ca)
