@@ -17,6 +17,7 @@ This repository serves as a template for organizing future projects.
         ├── notebooks               # Jupyter notebooks 
         ├── results                 # Analysis outputs, figures, etc. 
         ├── requirements.txt        # Python package dependencies
+        ├── .gitignore              # Files to ignore in Git
         ├── LICENSE
         └── README.md
 
