@@ -11,7 +11,6 @@ This repository serves as a template for organizing future projects.
 
 ## Repository Structure
 
-    .
     ESO_project/ 
         ├── data                    # stored on the Dataverse
         ├── docs                    # Documentation, papers, and reports 
