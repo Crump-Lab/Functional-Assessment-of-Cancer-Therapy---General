@@ -18,6 +18,7 @@ This repository serves as a template for organizing future projects.
         ├── results                 # Analysis outputs, figures, etc. 
         ├── requirements.txt        # Python package dependencies
         ├── .gitignore              # Files to ignore in Git
+        ├── .readthedocs.yaml       # host documentation
         ├── LICENSE
         └── README.md
 
