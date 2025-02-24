@@ -1,13 +1,13 @@
 # Crump Lab ESO_project
 
 ## Overview
-This repository serves as a template for ESO (esophageal)-related projects under the academic research lab at McGill University. It includes a standard directory structure and setup instructions.
+This repository serves as a template of FACT-E scoring for ESO (esophageal) projects under the academic research lab at McGill University. It includes physical well-being, social/family well-being, emotional well-being, functional well-being, and additional concerns.
 
 ## Project Description
 We publish the protocol on [protocols.io](https://www.protocols.io/workspaces/crump-lab). The data will be stored on [Dataverse](https://borealisdata.ca/dataverse/crump_lab). 
 
 ## Usage
-This repository serves as a template for organizing future projects.
+This repository serves as a template to score the FACT-E. 
 
 ## Repository Structure
 
