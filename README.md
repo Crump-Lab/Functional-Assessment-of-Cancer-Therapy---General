@@ -13,6 +13,7 @@ This repository serves as a template for organizing future projects.
 
     ESO_project/ 
         ├── docs                    # Documentation, papers, and reports 
+        ├── Temp                    # Temporary files
         ├── notebooks               # Jupyter notebooks 
         ├── results                 # Analysis outputs, figures, etc. 
         ├── requirements.txt        # Python package dependencies
