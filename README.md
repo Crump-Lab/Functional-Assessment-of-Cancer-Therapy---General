@@ -1,7 +1,7 @@
 # Crump Lab FACT-E 
 
 ## Overview
-This repository serves as a template of FACT-E scoring for ESO (esophageal) projects under the academic research lab at McGill University. It includes physical well-being, social/family well-being, emotional well-being, functional well-being, and additional concerns.
+This repository serves as a template of FACT-E scoring for ESO (esophageal) projects under the academic research lab at McGill University. It includes physical well-being, social/family well-being, emotional well-being, functional well-being, and esophagus cancer subscale.
 
 ## Project Description
 We publish the protocol on [protocols.io](https://www.protocols.io/workspaces/crump-lab). The data will be stored on [Dataverse](https://borealisdata.ca/dataverse/crump_lab). 
