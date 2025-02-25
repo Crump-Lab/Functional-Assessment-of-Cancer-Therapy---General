@@ -49,7 +49,7 @@ python FACT_E_scoring.py --input data.csv --output results.csv
 ### Example
 
 ```bash
-python FACT_E_scoring.py --input /ESO_FACT_E/Temp/EsophagealBank-EmotionalDistress_DATA_2025-02-13_1201.csv --output /ESO_FACT_E/Temp/results.csv
+python FACT_E_scoring.py --input ESO_FACT_E/Temp/EsophagealBank-EmotionalDistress_DATA_2025-02-13_1201.csv --output ESO_FACT_E/Temp/results.csv
 ```
 
 ### Arguments:
