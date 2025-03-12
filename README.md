@@ -1,7 +1,7 @@
-# Crump Lab FACT-E 
+# Functional Assessment of Cancer Therapy - Esophageal (FACT-E)
 
 ## Overview
-This repository provides an implementation for scoring the Functional Assessment of Cancer Therapy - Esophageal (FACT-E) questionnaire for ESO (esophageal) projects under the academic research lab at McGill University. It includes physical well-being, social/family well-being, emotional well-being, functional well-being, and esophagus cancer subscale. The implementation ensures accurate calculation of all subscale scores while handling reverse-scored items and missing values according to standard FACT scoring guidelines.
+This repository provides an implementation for scoring the Functional Assessment of Cancer Therapy - Esophageal (FACT-E) questionnaire and its subscales, including: physical well-being, social/family well-being, emotional well-being, functional well-being, and esophagus cancer subscale. The implementation ensures accurate calculation of all subscale scores while handling reverse-scored items and missing values according to version 4 of the FACT-E scoring guidelines (https://www.facit.org/measures/fact-e).
 
 ## Features
 These files provide a complete solution for FACT-E scoring that can be run from the command line. The script:
