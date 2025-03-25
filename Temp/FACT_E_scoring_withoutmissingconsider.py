@@ -16,7 +16,7 @@ import numpy as np
 
 def calculate_subscale_score(df, cols, reverse_items=None, subscale_name=""):
     """
-    Calculate subscale scores according to FACT scoring guidelines, only if >=50% items are answered
+    Calculate subscale scores according to FACT scoring guidelines
     
     Parameters:
     df (DataFrame): DataFrame containing the item responses
@@ -39,21 +39,13 @@ def calculate_subscale_score(df, cols, reverse_items=None, subscale_name=""):
             # Regular scoring
             df[f"{col}_score"] = df[col]
     
-    # Calculate the number of items and the 50% threshold
-    total_items = len(cols)
-    min_items_required = total_items / 2  # 50% threshold
-    
-    # Count non-NaN items for each row
+    # Calculate subscale score
     score_cols = [f"{col}_score" for col in cols]
-    num_answered_items = df[score_cols].notna().sum(axis=1)
     
     # Calculate subscale score: sum of scores * number of items / number of answered items
-    # Only calculate if >=50% items are answered
-    df[f"{subscale_name}_subscale_score"] = np.where(
-        num_answered_items >= min_items_required,
-        (df[score_cols].sum(axis=1, skipna=True) * len(cols)) / 
-        df[score_cols].notna().sum(axis=1),
-        np.nan
+    df[f"{subscale_name}_subscale_score"] = (
+        df[score_cols].sum(axis=1, skipna=True) * len(cols) /
+        df[score_cols].notna().sum(axis=1)
     )
     
     return df
@@ -70,12 +62,12 @@ def calculate_fact_e_scores(df):
     DataFrame: DataFrame with added score columns
     """
     # Define all subscale columns
-    pwb_cols = [f"gp{i}" for i in range(1, 8)]  # Physical Well-Being, 7 items
-    swb_cols = [f"gs{i}" for i in range(1, 8)]  # Social/Family Well-Being, 7 items
-    ewb_cols = [f"ge{i}" for i in range(1, 7)]  # Emotional Well-Being, 6 items
-    fwb_cols = [f"gf{i}" for i in range(1, 8)]  # Functional Well-Being, 7 items
+    pwb_cols = [f"gp{i}" for i in range(1, 8)]  # Physical Well-Being
+    swb_cols = [f"gs{i}" for i in range(1, 8)]  # Social/Family Well-Being
+    ewb_cols = [f"ge{i}" for i in range(1, 7)]  # Emotional Well-Being
+    fwb_cols = [f"gf{i}" for i in range(1, 8)]  # Functional Well-Being
     ecs_cols = [f"a_hn{i}" for i in range(1, 6)] + ["a_hn7", "a_hn10"] + \
-        [f"a_e{i}" for i in range(1, 8)] + ["a_c6", "a_c2", "a_act11"]  # Esophageal Cancer Subscale, 17 items
+        [f"a_e{i}" for i in range(1, 8)] + ["a_c6", "a_c2", "a_act11"]  # Esophageal Cancer Subscale
 
     # Calculate Physical Well-Being (PWB) subscale
     # All PWB items are reverse-scored
@@ -98,55 +90,21 @@ def calculate_fact_e_scores(df):
     df = calculate_subscale_score(df, ecs_cols, reverse_items=ecs_reverse_items, subscale_name="ecs")
 
     # Calculate FACT-G total score (PWB + SWB + EWB + FWB)
-    fact_g_items = pwb_cols + swb_cols + ewb_cols + fwb_cols  # 27 items
-    fact_g_item_cols = [f"{col}_score" for col in fact_g_items]
-    fact_g_num_answered = df[fact_g_item_cols].notna().sum(axis=1)
-    fact_g_min_items = 22  # 80% of 27 items = 21.6, rounded up to 22
-
-    df["fact_g_total"] = np.where(
-        # Condition 1: All subscales must be non-NaN (already ensures 50% of items per subscale)
-        (df["pwb_subscale_score"].notna()) & 
-        (df["swb_subscale_score"].notna()) & 
-        (df["ewb_subscale_score"].notna()) & 
-        (df["fwb_subscale_score"].notna()) &
-        # Condition 2: At least 80% of FACT-G items must be answered
-        (fact_g_num_answered >= fact_g_min_items),
-        df["pwb_subscale_score"] + df["swb_subscale_score"] + 
-        df["ewb_subscale_score"] + df["fwb_subscale_score"],
-        np.nan
+    df["fact_g_total"] = (
+        df["pwb_subscale_score"] +
+        df["swb_subscale_score"] +
+        df["ewb_subscale_score"] +
+        df["fwb_subscale_score"]
     )
 
     # Calculate FACT-E total score (FACT-G + ECS)
-    fact_e_items = fact_g_items + ecs_cols  # 27 + 17 = 44 items
-    fact_e_item_cols = [f"{col}_score" for col in fact_e_items]
-    fact_e_num_answered = df[fact_e_item_cols].notna().sum(axis=1)
-    fact_e_min_items = 36  # 80% of 44 items = 35.2, rounded up to 36
-
-    df["fact_e_total"] = np.where(
-        # Condition 1: FACT-G and ECS must be non-NaN
-        (df['fact_g_total'].notna()) & 
-        (df["ecs_subscale_score"].notna()) &
-        # Condition 2: At least 80% of FACT-E items must be answered
-        (fact_e_num_answered >= fact_e_min_items),
-        df['fact_g_total'] + df["ecs_subscale_score"],
-        np.nan
-    )
+    df["fact_e_total"] = df["fact_g_total"] + df["ecs_subscale_score"]
 
     # Calculate Trial Outcome Index (TOI) = PWB + FWB + ECS
-    toi_items = pwb_cols + fwb_cols + ecs_cols  # 7 + 7 + 17 = 31 items
-    toi_item_cols = [f"{col}_score" for col in toi_items]
-    toi_num_answered = df[toi_item_cols].notna().sum(axis=1)
-    toi_min_items = 25  # 80% of 31 items = 24.8, rounded up to 25
-
-    df["toi"] = np.where(
-        # Condition 1: PWB, FWB, and ECS must be non-NaN
-        (df["pwb_subscale_score"].notna()) & 
-        (df["fwb_subscale_score"].notna()) & 
-        (df["ecs_subscale_score"].notna()) &
-        # Condition 2: At least 80% of TOI items must be answered
-        (toi_num_answered >= toi_min_items),
-        df["pwb_subscale_score"] + df["fwb_subscale_score"] + df["ecs_subscale_score"],
-        np.nan
+    df["toi"] = (
+        df["pwb_subscale_score"] +
+        df["fwb_subscale_score"] +
+        df["ecs_subscale_score"]
     )
     
     return df
