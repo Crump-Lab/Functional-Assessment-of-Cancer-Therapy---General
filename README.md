@@ -25,6 +25,13 @@ These files provide a complete solution for FACT-E scoring that can be run from 
    - Proper handling of missing values.
    - Scaling scores based on the number of answered items.
 
+## Missing data
+1. 50% Rule for Subscale Score Calculation: Each subscale score (PWB, SWB, EWB, FWB, ECS) should only be calculated if at least 50% of the items within that subscale are answered.
+2. 80% Rule and All Component Subscales Valid for Composite Score Calculation: Composite scores (FACT-G, FACT-E, TOI) must meet both conditions:
+    - At least 80% of the items within the composite score must be completed.
+    - All component subscales must have valid scores (i.e., each subscale must have at least 50% of its items answered).
+**Reference**: https://www.facit.org/scoring 
+
 ## Installation
 To use this implementation, clone the repository and install dependencies:
 
