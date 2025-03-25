@@ -30,6 +30,7 @@ These files provide a complete solution for FACT-E scoring that can be run from 
 2. 80% Rule and All Component Subscales Valid for Composite Score Calculation: Composite scores (FACT-G, FACT-E, TOI) must meet both conditions:
     - At least 80% of the items within the composite score must be completed.
     - All component subscales must have valid scores (i.e., each subscale must have at least 50% of its items answered).
+      
 **Reference**: https://www.facit.org/scoring 
 
 ## Installation
