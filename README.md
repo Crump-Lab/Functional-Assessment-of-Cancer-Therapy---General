@@ -1,7 +1,7 @@
-# Crump Lab FACT-E 
+# Functional Assessment of Cancer Therapy - Esophageal (FACT-E)
 
 ## Overview
-This repository provides an implementation for scoring the Functional Assessment of Cancer Therapy - Esophageal (FACT-E) questionnaire for ESO (esophageal) projects under the academic research lab at McGill University. It includes physical well-being, social/family well-being, emotional well-being, functional well-being, and esophagus cancer subscale. The implementation ensures accurate calculation of all subscale scores while handling reverse-scored items and missing values according to standard FACT scoring guidelines.
+This repository provides an implementation for scoring the Functional Assessment of Cancer Therapy - Esophageal (FACT-E) questionnaire and its subscales, including: physical well-being, social/family well-being, emotional well-being, functional well-being, and esophagus cancer subscale. The implementation ensures accurate calculation of all subscale scores while handling reverse-scored items and missing values according to version 4 of the FACT-E scoring guidelines (https://www.facit.org/measures/fact-e).
 
 ## Features
 These files provide a complete solution for FACT-E scoring that can be run from the command line. The script:
@@ -24,6 +24,14 @@ These files provide a complete solution for FACT-E scoring that can be run from 
 9. Follows standard FACT scoring guidelines, including:
    - Proper handling of missing values.
    - Scaling scores based on the number of answered items.
+
+## Missing data
+1. 50% Rule for Subscale Score Calculation: Each subscale score (PWB, SWB, EWB, FWB, ECS) should only be calculated if at least 50% of the items within that subscale are answered.
+2. 80% Rule and All Component Subscales Valid for Composite Score Calculation: Composite scores (FACT-G, FACT-E, TOI) must meet both conditions:
+    - At least 80% of the items within the composite score must be completed.
+    - All component subscales must have valid scores (i.e., each subscale must have at least 50% of its items answered).
+      
+**Reference**: https://www.facit.org/scoring 
 
 ## Installation
 To use this implementation, clone the repository and install dependencies:
