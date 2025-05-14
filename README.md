@@ -81,7 +81,7 @@ The input CSV file should contain columns with the following naming convention:
 - Emotional Well-Being: ge1, ge2, ..., ge6
 - Functional Well-Being: gf1, gf2, ..., gf7
 
-Each item should be scored from 0-4 according to the FACT-E questionnaire guidelines.
+Each item should be scored from 0-4 according to the FACT-G questionnaire guidelines.
 
 ## Project Description
 We publish the protocol on [protocols.io](https://www.protocols.io/workspaces/crump-lab). The data will be stored on [Dataverse](https://borealisdata.ca/dataverse/crump_lab). 
