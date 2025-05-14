@@ -5,11 +5,11 @@ This repository provides an implementation for scoring the Functional Assessment
 
 ## Features
 These files provide a complete solution for FACT-G scoring that can be run from the command line. The script:
-1. Extracts relevant columns from the input data
+1. Extracts relevant columns from the input data.
 2. Defines all subscales and their items.
 3. Creates a reusable function for calculating subscale scores.
 4. Handles reverse-scored items appropriately.
-5. Calculates all subscale scores with proper handling of reverse-scored items
+5. Calculates all subscale scores with proper handling of reverse-scored items.
 6. Calculates all FACT-G components:
    - **Physical Well-Being (PWB)**
    - **Social/Family Well-Being (SWB)**
