@@ -1,24 +1,21 @@
-# Functional Assessment of Cancer Therapy - Esophageal (FACT-E)
+# Functional Assessment of Cancer Therapy - General (FACT-G)
 
 ## Overview
-This repository provides an implementation for scoring the Functional Assessment of Cancer Therapy - Esophageal (FACT-E) questionnaire and its subscales, including: physical well-being, social/family well-being, emotional well-being, functional well-being, and esophagus cancer subscale. The implementation ensures accurate calculation of all subscale scores while handling reverse-scored items and missing values according to version 4 of the FACT-E scoring guidelines (https://www.facit.org/measures/fact-e).
+This repository provides an implementation for scoring the Functional Assessment of Cancer Therapy - General (FACT-G) questionnaire and its subscales, including: physical well-being, social/family well-being, emotional well-being, and functional well-being. The implementation ensures accurate calculation of all subscale scores while handling reverse-scored items and missing values according to version 4 of the FACT-E scoring guidelines (https://www.facit.org/measures/fact-g).
 
 ## Features
-These files provide a complete solution for FACT-E scoring that can be run from the command line. The script:
+These files provide a complete solution for FACT-G scoring that can be run from the command line. The script:
 1. Extracts relevant columns from the input data
 2. Defines all subscales and their items.
 3. Creates a reusable function for calculating subscale scores.
 4. Handles reverse-scored items appropriately.
 5. Calculates all subscale scores with proper handling of reverse-scored items
-6. Calculates all FACT-E components:
+6. Calculates all FACT-G components:
    - **Physical Well-Being (PWB)**
    - **Social/Family Well-Being (SWB)**
    - **Emotional Well-Being (EWB)**
    - **Functional Well-Being (FWB)**
-   - **Esophageal Cancer Subscale (ECS)**
    - **FACT-G total** (PWB + SWB + EWB + FWB)
-   - **FACT-E total** (FACT-G + ECS)
-   - **Trial Outcome Index (TOI)** (PWB + FWB + ECS)
 7. Outputs the results to a CSV file
 8. Displays summary statistics
 9. Follows standard FACT scoring guidelines, including:
@@ -26,8 +23,8 @@ These files provide a complete solution for FACT-E scoring that can be run from 
    - Scaling scores based on the number of answered items.
 
 ## Missing data
-1. 50% Rule for Subscale Score Calculation: Each subscale score (PWB, SWB, EWB, FWB, ECS) should only be calculated if at least 50% of the items within that subscale are answered.
-2. 80% Rule and All Component Subscales Valid for Composite Score Calculation: Composite scores (FACT-G, FACT-E, TOI) must meet both conditions:
+1. 50% Rule for Subscale Score Calculation: Each subscale score (PWB, SWB, EWB, FWB) should only be calculated if at least 50% of the items within that subscale are answered.
+2. 80% Rule and All Component Subscales Valid for Composite Score Calculation: The FACT-G total score must meet both conditions:
     - At least 80% of the items within the composite score must be completed.
     - All component subscales must have valid scores (i.e., each subscale must have at least 50% of its items answered).
       
@@ -38,26 +35,26 @@ To use this implementation, clone the repository and install dependencies:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Crump-Lab/ESO_FACT_E.git
+git clone https://github.com/Crump-Lab/Functional-Assessment-of-Cancer-Therapy---General.git FACT_G
 
 # Navigate to the project directory
-cd ESO_FACT_E
+cd FACT_G
 
 # Install required dependencies
 pip install -r requirements.txt
 ```
 
 ## Usage
-To score the FACT-E questionnaire, run the following command:
+To score the FACT-G questionnaire, run the following command:
 
 ```bash
-python FACT_E_scoring.py --input data.csv --output results.csv
+python FACT_G_scoring.py --input data.csv --output results.csv
 ```
 
 ### Example
 
 ```bash
-python FACT_E_scoring.py --input ./Temp/EsophagealBank-EmotionalDistress_DATA_2025-02-13_1201.csv --output ./results/results.csv
+python FACT_G_scoring.py --input ./Temp/EsophagealBank-EmotionalDistress_DATA_2025-02-13_1201.csv --output ./results/results.csv
 ```
 
 ### Arguments:
@@ -72,10 +69,7 @@ The tool calculates the following scores:
 2. **Social/Family Well-Being (SWB)** - Items GS1-GS7
 3. **Emotional Well-Being (EWB)** - Items GE1-GE6
 4. **Functional Well-Being (FWB)** - Items GF1-GF7
-5. **Esophageal Cancer Subscale (ECS)** - Items HN1-HN5, HN7, HN10, E1-E7, C6, C2, ACT11
-6. **FACT-G Total** - Sum of PWB, SWB, EWB, and FWB
-7. **FACT-E Total** - FACT-G + ECS
-8. **Trial Outcome Index (TOI)** - PWB + FWB + ECS
+5. **FACT-G Total** - Sum of PWB, SWB, EWB, and FWB
 
 The tool handles reverse-scored items and properly scales scores based on the number of answered items.
 
@@ -86,7 +80,6 @@ The input CSV file should contain columns with the following naming convention:
 - Social Well-Being: gs1, gs2, ..., gs7
 - Emotional Well-Being: ge1, ge2, ..., ge6
 - Functional Well-Being: gf1, gf2, ..., gf7
-- Esophageal Cancer Subscale: a_hn1, a_hn2, ..., a_e1, a_e2, ..., a_c6, a_c2, a_act11
 
 Each item should be scored from 0-4 according to the FACT-E questionnaire guidelines.
 
