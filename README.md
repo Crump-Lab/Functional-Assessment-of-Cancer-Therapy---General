@@ -58,7 +58,7 @@ python FACT_G_scoring.py --input ./Temp/EsophagealBank-EmotionalDistress_DATA_20
 ```
 
 ### Arguments:
-- `--input`: Path to the input CSV file containing questionnaire responses.
+- `--input`: Path to the input **CSV** file containing questionnaire responses.
 - `--output`: Path to save the output CSV file with computed scores.
 
 ## FACT-E Scoring Details
